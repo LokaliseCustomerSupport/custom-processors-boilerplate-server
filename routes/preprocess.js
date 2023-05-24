@@ -20,7 +20,7 @@ module.exports = async function (fastify) {
         // Process the value of the translation:
         payload.collection.keys[keyId].translations[lang].translation = v.translation.replace(
           'BANNED',
-          '',
+          'LOKALISE_SUPPORT_PRE',
         )
       }
     }
