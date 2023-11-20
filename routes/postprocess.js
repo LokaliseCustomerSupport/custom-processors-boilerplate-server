@@ -9,6 +9,9 @@ module.exports = async function (fastify) {
     // Get the payload from the request:
     const payload = request.body
 
+    //@todo define a platofrm specific url link pattern. For example, ZD Guide URL
+    const urlPattern = '(http|https):\/\/[^ "]+$';
+
     // @todo: validation
 
     // @todo: introduce timeout
@@ -19,8 +22,10 @@ module.exports = async function (fastify) {
       for (const [lang, v] of Object.entries(keyValue.translations)) {
         // Process the value of the translation:
         payload.collection.keys[keyId].translations[lang].translation = v.translation.replace(
-          '&nbsp;',
-          '&amp;nbsp;',
+         // @todo
+         // 1- Parse the value of the translation object to see if you found a URL pattern
+         // 2 - Check if the URL contains the base language iso code
+         // 3 - If so, replace the base language iso code with the value of [lang]
         )
       }
     }
