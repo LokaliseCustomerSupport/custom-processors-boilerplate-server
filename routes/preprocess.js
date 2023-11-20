@@ -5,28 +5,8 @@ module.exports = async function (fastify) {
     if (!request.body) {
       return { error: 'Invalid request: Missing body' }
     }
-
-    // Get the payload from the request:
+    // Get the payload from the request and return it, no pre-processing required at all
     const payload = request.body
-
-    // @todo: validation
-
-    // @todo: introduce timeout
-
-    // Iterate over the keys in the collection:
-    for (const [keyId, keyValue] of Object.entries(payload.collection.keys)) {
-      // Iterate over the translations in the key:
-      for (const [lang, v] of Object.entries(keyValue.translations)) {
-        // Process the value of the translation:
-        payload.collection.keys[keyId].translations[lang].translation = v.translation.replace(
-          '&amp;nbsp;',
-          '&nbsp;',
-        )
-      }
-    }
-
-    // @todo: validate processed values
-
     await reply.send(payload)
   })
 }
