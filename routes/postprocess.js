@@ -9,8 +9,9 @@ module.exports = async function (fastify) {
     // Get the payload from the request:
     const payload = request.body
 
-    //@todo define a platofrm specific url link pattern. For example, ZD Guide URL
-    const urlPattern = '(http|https):\/\/[^ "]+$';
+    const baseLangIso = "en-US"
+    //@todo define a platofrm specific url link pattern. For example, ZD Guide URL inserted in an article would look like this in HTML: href="/hc/en-001/articles/7107935480605"
+    const urlPattern = "\/hc\/" + baseLangIso + "\/articles\/(\d+)";
 
     // @todo: validation
 
